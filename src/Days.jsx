@@ -1,15 +1,38 @@
-import React from "react";
+import React,{useState} from "react";
+
+let days = []
+
+for(let i=1;i<=30;i++){
+    days.push({"day":i,"cross":false})
+}
 
 export default function Days(){
-    let days = []
+    const [crossed,setCrossed] = useState(false)
 
-    for(let i=1;i<=30;i++){
-        days.push(i)
+    function changeCross(current){
+        days.map(day =>{
+            if(day.day === current){
+                if(day.cross===false){
+                    return day.cross=true
+                } else {
+                    return day.cross=false
+                }
+            }
+        })
+        setCrossed(val => !val)
     }
 
     return (<>
         {days.map(day => {
-            return <div className='text-gray-50 hover:bg-gray-50 hover:text-gray-900 font-semibold text-lg cursor-pointer m-1 grid bg-gray-900 w-10 h-10 text-center rounded-3xl place-items-center'>{day}</div>
+                return <div 
+                    key={day.day} 
+                    className={day.cross?'text-gray-900 relative font-semibold text-lg cursor-pointer m-1 grid bg-gray-100 w-10 h-10 text-center rounded-3xl place-items-center':'text-gray-50 hover:bg-pink-600 relative font-semibold text-lg cursor-pointer m-1 grid bg-gray-900 w-10 h-10 text-center rounded-3xl place-items-center'}
+                    onClick={()=>changeCross(day.day)}
+                    >
+                {day.cross?<div className="w-1 h-full rotate-45 bg-pink-600 absolute z-10"></div>:null}
+                {day.day}
+                </div>
         })}
     </>)
 }
+{/* <div className="w-1 h-full rotate-45 bg-gray-900 absolute z-10"></div> */}
