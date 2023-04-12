@@ -9,11 +9,9 @@ function App() {
   const [cals,createCal] = useState([])
   const [habit,createHabit] = useState("")
 
-  // useEffect(()=>{
-  //   cals.map(item => {
-  //     localStorage.setItem(habitCount++,item.habits)
-  //   })
-  // },[cals])
+  const deleteCalendar = (taskID) => {
+    createCal(cals.filter(item => item.id!==taskID))
+  }
 
   function createCalendar(event){
     event.preventDefault()
@@ -34,7 +32,7 @@ function App() {
         <div>
           {cals.map(cal => {
             return <div className='text-black w-[40vw] flex flex-col place-items-center mb-10' key={cal.id}>
-              <Cal name={cal.habits} />
+              <Cal name={cal.habits} id={cal.id} delCal = {deleteCalendar} />
             </div>
           })}
         </div>
