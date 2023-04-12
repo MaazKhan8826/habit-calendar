@@ -3,10 +3,17 @@ import react, {useState, useEffect} from 'react'
 import Cal from './Calender'
 
 let globalCounter = 0
+let habitCount = 0
 
 function App() {
   const [cals,createCal] = useState([])
   const [habit,createHabit] = useState("")
+
+  // useEffect(()=>{
+  //   cals.map(item => {
+  //     localStorage.setItem(habitCount++,item.habits)
+  //   })
+  // },[cals])
 
   function createCalendar(event){
     event.preventDefault()
