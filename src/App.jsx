@@ -1,5 +1,5 @@
 import './App.css';
-import react, {useState, useEffect} from 'react'
+import react, {useState, useContext} from 'react'
 import Cal from './Calender'
 
 let globalCounter = 0
