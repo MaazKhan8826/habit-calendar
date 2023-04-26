@@ -9,8 +9,10 @@ for(let i=1;i<=30;i++){
 export default function Days(){
     const [crossed,setCrossed] = useState(false)
 
+    const day = [...days]
+
     function changeCross(current){
-        days.map(day =>{
+        day.map(day =>{
             if(day.day === current){
                 if(day.cross===false){
                     return day.cross=true
@@ -23,7 +25,7 @@ export default function Days(){
     }
 
     return (<>
-        {days.map(day => {
+        {day.map(day => {
                 return <div 
                     key={day.day} 
                     className={day.cross?'text-gray-900 relative font-semibold text-lg cursor-pointer m-1 grid bg-gray-100 w-10 h-10 text-center rounded-3xl place-items-center':'text-gray-50 hover:bg-pink-600 relative font-semibold text-lg cursor-pointer m-1 grid bg-gray-900 w-10 h-10 text-center rounded-3xl place-items-center'}
